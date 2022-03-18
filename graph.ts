@@ -1,4 +1,4 @@
-export type EntityType = "User" | "Post";
+export type EntityType = "User" | "Post";
 
 export interface Entity {
   id: string;
@@ -24,7 +24,7 @@ export class Graph {
     entities: {},
     relationships: []
   };
-  
+
   createEntity(id: string, type: EntityType, data: any): Entity {
     const entity = {
       id,
@@ -40,12 +40,12 @@ export class Graph {
   findEntityById(id: string): Entity | null {
     return this.graph.entities[id] || null;
   }
-  
+
   createRelationship(from: Entity, to: Entity, type: RelationshipType): Relationship {
     if (!this.findEntityById(from.id)) {
       throw new Error(`Could not find (from) entity from graph with id: ${from.id}`);
     }
-    
+
     if (!this.findEntityById(to.id)) {
       throw new Error(`Could not find (to) entity from graph with id: ${to.id}`);
     }
